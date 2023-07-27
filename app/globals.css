@@ -25,3 +25,22 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+/* Link {
+  all: unset;
+}
+
+Link:active {
+  all: unset;
+}
+Link:visited {
+  all: unset;
+}
+Link:hover {
+  all: unset;
+}
+Link:focus {
+  all: unset;
+}
+ */

@@ -1,0 +1,12 @@
+.linkStyling {
+  &:hover {
+    color: white;
+    font-weight: bold;
+  }
+  &:active {
+    color: white;
+  }
+  &:visited {
+    color: white;
+  }
+}
