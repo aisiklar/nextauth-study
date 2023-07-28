@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function LoginWithCredentials() {
   const [username, setUsername] = useState("");
@@ -14,9 +15,17 @@ export default function LoginWithCredentials() {
     setPassword(e.target.value);
   }
 
-  function submitForm(e: FormEvent<HTMLFormElement>) {
+  async function submitForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log("form submit: ", username, password);
+
+    let loginResult = await signIn("credentials", {
+      username: username,
+      password: password,
+      redirect: true,
+      callbackUrl: "/dashboard",
+    });
+    console.log("loginResult: ", loginResult);
   }
 
   return (

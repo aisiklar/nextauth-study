@@ -1,10 +1,10 @@
-
-
 import Link from "next/link";
 import LinkToHome from "./headerComponents/linkToHome";
+import { signOut } from "next-auth/react";
+import SignOutButton from "./headerComponents/signoutButton";
+import UserInfo from "./headerComponents/userInfo";
 
 export default function Header() {
-
   return (
     <main className="bg-slate-700 py-4">
       <div className="flex justify-between items-center">
@@ -21,8 +21,8 @@ export default function Header() {
           </div>
         </div>
         <div className="mr-10 flex items-center">
-          <div>user info</div>
-          <button className="ml-20 border rounded p-2">Signout</button>
+          <UserInfo />
+          <SignOutButton />
         </div>
       </div>
     </main>

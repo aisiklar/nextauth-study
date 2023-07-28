@@ -10,7 +10,7 @@ export default function ClientComp() {
     required: true,
     onUnauthenticated() {
       // The user is not authenticated, handle it here.
-      console.log("in unauthentcated prop.");
+      console.log("client comp, in unauthenticated prop.");
       router.push("/auth/login");
     },
   });
