@@ -1,6 +1,7 @@
 "use client";
 
 import LoginWithCredentials from "@/components/LoginWithCredentials";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function Signin() {
@@ -24,6 +25,11 @@ export default function Signin() {
       setSigninMethod(LoginMethod.none);
     }
   }
+
+  // get searchparams?
+  const url = usePathname();
+
+  console.log("url", url);
 
   return (
     <main className="mt-20 width-max-20 ml-4">
