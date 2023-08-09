@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function ClientComp() {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function ClientComp() {
     onUnauthenticated() {
       // The user is not authenticated, handle it here.
       console.log("client comp, in unauthenticated prop.");
-      router.push("/auth/login");
+      router.push("/auth/login?callbackUrl=/client");
     },
   });
 

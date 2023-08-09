@@ -1,8 +1,8 @@
 "use client";
 
 import LoginWithCredentials from "@/components/LoginWithCredentials";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function Signin() {
   enum LoginMethod {
@@ -28,8 +28,17 @@ export default function Signin() {
 
   // get searchparams?
   const url = usePathname();
+  console.log("at signin page, url", url);
 
-  console.log("url", url);
+  const params = useSearchParams();
+  let searchParams = params.get("callbackUrl");
+  console.log("searchParams: ", searchParams, typeof searchParams);
+
+  //const [callbackUrl, setCallbackUrl] = useState('');
+
+  useEffect(() => {
+    console.log("login page mounted");
+  }, []);
 
   return (
     <main className="mt-20 width-max-20 ml-4">
@@ -57,7 +66,7 @@ export default function Signin() {
       </div>
       <div>
         {signinMethod == LoginMethod.credentials ? (
-          <LoginWithCredentials />
+          <LoginWithCredentials callbackUrl={searchParams} />
         ) : null}
       </div>
     </main>

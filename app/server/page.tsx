@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 export default async function ServerComp() {
   const session = await getServerSession(authOptions);
+  
   if (session) {
     console.log("in server comp, session, status: ", session);
   } else {

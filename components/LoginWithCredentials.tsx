@@ -3,10 +3,16 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 
-export default function LoginWithCredentials() {
+type Props = {
+  callbackUrl: string;
+};
+
+export default function LoginWithCredentials({ callbackUrl }: Props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   console.log("username, password: ", username, password);
+
+  console.log("callbackUrl in LoginWithCredentials comp: ", callbackUrl);
 
   function receiveUsername(e: ChangeEvent<HTMLInputElement>) {
     setUsername(e.target.value);
@@ -23,7 +29,7 @@ export default function LoginWithCredentials() {
       username: username,
       password: password,
       redirect: true,
-      callbackUrl: "/dashboard",
+      callbackUrl: `${callbackUrl}`,
     });
     console.log("loginResult: ", loginResult);
   }
